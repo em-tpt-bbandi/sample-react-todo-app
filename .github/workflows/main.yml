@@ -28,20 +28,13 @@ jobs:
           npm run build  # Assuming you have a build script
           npm install -g pm2 
 
-jobs1:
-  deploy:
-    runs-on: self-hosted
-
-    steps:
-      - name: Stop Applications
-        run: |
-          pm2 kill
-          
       - name: Start Applications
         run: |    
-          cd ~/actions-runner/_work/sample-react-todo-app/sample-react-todo-app/
+          cd /path/to/your/application/  # Adjust this to your actual application path
           
-          pm2 start "npm run start" --name to-do-app --cwd ~/actions-runner/_work/sample-react-todo-app/sample-react-todo-app/
+          echo "Before PM2 start"
+          pm2 start "npm run start" --name to-do-app --cwd /path/to/your/application/
+          echo "After PM2 start"
 
       - name: Notify Deployment Status
         run: |
