@@ -33,7 +33,8 @@ jobs:
           
           cd ~/actions-runner/_work/sample-react-todo-app/sample-react-todo-app/
           
-          pm2 start "npm run start" --name to-do-app
+          pm2 start "npm run start" --name to-do-app --cwd ~/actions-runner/_work/sample-react-todo-app/sample-react-todo-app/
+
 
       - name: Notify Deployment Status
         run: |
