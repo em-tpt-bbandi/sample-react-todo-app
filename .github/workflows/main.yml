@@ -1,0 +1,31 @@
+name: Deploy Project
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Adjust the version as needed
+
+      - name: Install Dependencies
+        run: |
+          npm ci  # For production use, recommended over npm install
+
+      - name: Build Project
+        run: |
+          npm run build  # Assuming you have a build script
+
+      - name: Notify Deployment Status
+        run: |
+          echo "Deployment completed successfully!"
